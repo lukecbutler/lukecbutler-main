@@ -1,0 +1,15 @@
+#contact_book, #add_contact, #show_contacts, #delete_contact{
+    text-align: center;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+#name-div, #number-div, #button-div, #to-home-div, #contacts-title, #contacts, #delete_contacts, #error{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding-bottom: 2%;
+}
