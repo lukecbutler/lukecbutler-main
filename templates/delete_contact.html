@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/styles.css')}}">
-</head>
-<body>
-    <h1 id="delete_contact">Delete Contact</h1>
+<!-- delele contact html -->
+{% extends "abase.html" %}
+
+{% block title %}Delete Contact{% endblock %}
+{% block link %}<link rel="stylesheet" href="{{url_for('static', filename = 'css/styles.css')}}">{% endblock %}
+
+{% block body %}
+
+<h1 id="delete_contact">Delete Contact</h1>
 
     <h2 id="contacts">Contacts: </h2>
     <p id="contacts">
@@ -24,7 +23,7 @@
     </p>
 
 
-    <form action="/handleDeleteContact" method="POST" id="delete_contact">
+    <form action="/contact/delete" method="POST" id="delete_contact">
         <label>Enter Index of Contact: </label>
         <input name="contact-number" min="1" step="1">
 
@@ -32,5 +31,6 @@
     </form>
 
     <p id="to-home-div"> <a href="/">go home instead</a></p>
-</body>
-</html>
+
+
+{% endblock %}
