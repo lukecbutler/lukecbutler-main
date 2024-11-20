@@ -11,6 +11,8 @@ def home():
     return render_template("homepage.html")
 
 
+
+
 ####################################################################################
 """
 Contact Book Routes:
@@ -18,11 +20,11 @@ Contact Book Routes:
 ####################################################################################
 #contact book homepage
 @app.route("/contact/home")
-def contactHome():
+def contact_home():
     return render_template("home_contact.html")
 
 @app.route("/contact/show")
-def showContacts():
+def show_contacts():
     return render_template("show_contacts.html", contacts = contacts)
 
 @app.route("/contact/add", methods=["GET", "POST"])

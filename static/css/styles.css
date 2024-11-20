@@ -1,4 +1,4 @@
-#contact_book, #add_contact, #show_contacts, #delete_contact, #lukes-website{
+#contact_book, #add_contact, #show_contacts, #delete_contact, #website-headers{
     text-align: center;
 }
 
@@ -12,4 +12,27 @@ body{
     align-items: center;
     height: auto;
     padding-bottom: 2%;
+}
+
+
+/* Header css */
+
+#main-header-div{
+    display: flex;
+    justify-content: space-between;
+
+    
+}
+
+#website-header{
+    display: flex;
+    margin-left: auto;
+}
+
+#logo {
+    display: flex;
+    margin-left: auto;
+
+    width: 100px; /* Fills the parent container */
+    height: auto; /* Maintains aspect ratio */
 }

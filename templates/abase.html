@@ -6,12 +6,17 @@
     <title>{% block title %}Luke's Website{% endblock %}</title>
     {% block link %}{% endblock %}
 </head>
-<hader>
-    <h1 id="lukes-website">
-        Luke's Website
-        <hr>
-    </h1>
-</hader>
+<header>
+    <div id="main-header-div">
+        <h1 id="website-header">
+            <a href="/">Luke's Website</a>
+        </h1>
+
+        <img src="{{url_for('static', filename = 'images/charizard.png')}}" alt="Logo" id="logo">
+
+    </div>
+    <hr>
+</header>
 <body>
     {% block body %}{% endblock %}
 </body>
