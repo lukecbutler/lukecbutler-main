@@ -10,13 +10,18 @@ contacts = []
 def home():
     return render_template("homepage.html")
 
+###################################################################################
+'''Projects'''
+###################################################################################
+
+@app.route("/projects")
+def projects():
+    return render_template("projects.html")
 
 
 
 ####################################################################################
-"""
-Contact Book Routes:
-"""
+"""Contact Book Routes:"""
 ####################################################################################
 #contact book homepage
 @app.route("/contact/home")
@@ -66,6 +71,7 @@ def delete_contact():
         contacts.pop(contact_number-1)
 
     return render_template("delete_contact.html", contacts = contacts)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=80, host="0.0.0.0")
