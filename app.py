@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request
 import pymysql
+import os
 
 app = Flask(__name__)
 
@@ -19,14 +20,23 @@ def home():
 def projects():
     return render_template("projects.html")
 
+if os.getenv("PYTHONANYWHERE"):
+    DB_CONFIG = {
+        "host": "username.mysql.pythonanywhere-services.com",
+        "user": "username",
+        "password": "password",
+        "database": "username$database_name"
+    }
+else:
+    DB_CONFIG = {
+        "host": "localhost",
+        "user": "root",
+        "password": "password",
+        "database": "Pokemon"
+    }
+
 def get_db_connection():
-    connection = pymysql.connect(
-        host = '127.0.0.1',
-        user = 'root',
-        password = 'password',
-        database = 'Pokemon'
-    )
-    return connection
+    return pymysql.connect(**DB_CONFIG)
 
 @app.route('/pokedex', methods = {'GET', 'POST'})
 def get_pokemon():
