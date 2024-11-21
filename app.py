@@ -22,9 +22,9 @@ def projects():
 
 if os.getenv("PYTHONANYWHERE"):
     DB_CONFIG = {
-        "host": "username.mysql.pythonanywhere-services.com",
-        "user": "username",
-        "password": "password",
+        "host": "tarheelfan2002.mysql.pythonanywhere-services.com",
+        "user": "tarheelfan2002",
+        "password": "sqlpassword",
         "database": "username$database_name"
     }
 else:
