@@ -56,8 +56,10 @@ def get_pokemon():
 
         pokemon = cursor.fetchone() 
 
+        speciesLow = pokemon[1].lower()
+
         if pokemon:
-            return render_template('pokemon.html', pokemon_id = pokemon[0], species = pokemon[1], type1 = pokemon[2], type2 = pokemon[3])
+            return render_template('pokemon.html', pokemon_id = pokemon[0], speciesLow = speciesLow, type1 = pokemon[2], type2 = pokemon[3])
 
         else:
             return render_template('pokemon.html', error = "Pokemon not found.")
