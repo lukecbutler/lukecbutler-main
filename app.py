@@ -20,20 +20,20 @@ def home():
 def projects():
     return render_template("projects.html")
 
-if os.getenv("PYTHONANYWHERE"):
-    DB_CONFIG = {
-        "host": "tarheelfan2002.mysql.pythonanywhere-services.com",
-        "user": "tarheelfan2002",
-        "password": "sqlpassword",
-        "database": "username$database_name"
-    }
-else:
-    DB_CONFIG = {
-        "host": "localhost",
-        "user": "root",
-        "password": "password",
-        "database": "Pokemon"
-    }
+DB_CONFIG = {
+    "host": "tarheelfan2002.mysql.pythonanywhere-services.com",
+    "user": "tarheelfan2002",
+    "password": "sqlpassword",
+    "database": "tarheelfan2002$Pokedex"
+}
+
+'''
+DB_CONFIG = {
+    "host": "localhost",
+    "user": "user",
+    "password": "password",
+    "database": "Pokemon"
+'''
 
 def get_db_connection():
     return pymysql.connect(**DB_CONFIG)
