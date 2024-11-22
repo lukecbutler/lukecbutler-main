@@ -2,11 +2,28 @@
 
 from flask import Flask, render_template, request
 import pymysql
-import os
 
 app = Flask(__name__)
 
 contacts = []
+'''
+DB_CONFIG = {
+    "host": "tarheelfan2002.mysql.pythonanywhere-services.com",
+    "user": "tarheelfan2002",
+    "password": "sqlpassword",
+    "database": "tarheelfan2002$Pokedex"
+}
+'''
+
+DB_CONFIG = {
+    "host": "localhost",
+    "user": "root",
+    "password": "password",
+    "database": "Pokemon"
+}
+
+def get_db_connection():
+    return pymysql.connect(**DB_CONFIG)
 
 @app.route("/")
 def home():
@@ -20,23 +37,9 @@ def home():
 def projects():
     return render_template("projects.html")
 
-DB_CONFIG = {
-    "host": "tarheelfan2002.mysql.pythonanywhere-services.com",
-    "user": "tarheelfan2002",
-    "password": "sqlpassword",
-    "database": "tarheelfan2002$Pokedex"
-}
-
-'''
-DB_CONFIG = {
-    "host": "localhost",
-    "user": "user",
-    "password": "password",
-    "database": "Pokemon"
-'''
-
-def get_db_connection():
-    return pymysql.connect(**DB_CONFIG)
+###################################################################################
+'''Pokedex'''
+###################################################################################
 
 @app.route('/pokedex', methods = {'GET', 'POST'})
 def get_pokemon():
@@ -54,7 +57,7 @@ def get_pokemon():
 
         cursor.execute("SELECT master_id, species, type1, type2 FROM pokemon_data WHERE master_id = %s", (pokemon_id))
 
-        pokemon = cursor.fetchone() 
+        pokemon = cursor.fetchone()
 
         speciesLow = pokemon[1].lower()
 
@@ -93,7 +96,7 @@ def add_contact():
 
         contacts.append([name, number])
         return render_template("home_contact.html")
-    
+
     return render_template("add_contact.html")
 
 @app.route("/contact/delete", methods=["GET", "POST"])
@@ -109,7 +112,7 @@ def delete_contact():
         # Checks if contacts list is empty - if empty prompt user no contact to delete
         if not contacts:
             return render_template("delete_contact.html", contacts=contacts, error="No contacts you silly goose.")
-    
+
         # Check if contact_number is within range - if contact number is not within range return page until user enters appropriate number
         if contact_number < 1 or contact_number > len(contacts):
             return render_template("delete_contact.html", contacts=contacts, error="Add a contact first!!")
