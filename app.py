@@ -6,21 +6,23 @@ import pymysql
 app = Flask(__name__)
 
 contacts = []
-'''
+
 DB_CONFIG = {
     "host": "tarheelfan2002.mysql.pythonanywhere-services.com",
     "user": "tarheelfan2002",
     "password": "sqlpassword",
     "database": "tarheelfan2002$Pokedex"
 }
-'''
 
+
+'''
 DB_CONFIG = {
     "host": "localhost",
     "user": "root",
     "password": "password",
     "database": "Pokemon"
 }
+'''
 
 def get_db_connection():
     return pymysql.connect(**DB_CONFIG)
@@ -36,6 +38,8 @@ def home():
 @app.route("/projects")
 def projects():
     return render_template("projects.html")
+
+
 
 ###################################################################################
 '''Pokedex'''
@@ -66,6 +70,7 @@ def get_pokemon():
 
         else:
             return render_template('pokemon.html', error = "Pokemon not found.")
+
 
 
 
